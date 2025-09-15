@@ -6,8 +6,16 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header><h1>Quản lý voucher</h1></header>
-  <nav><a href="index.php">← Quay lại Dashboard</a></nav>
+  <?php
+
+  $breadcrumb = [
+      ["label" => "Dashboard", "url" => "index.php"],
+      ["label" => "Khuyến mãi", "url" => "customers.php"],
+      ["label" => "Danh sách"] 
+  ];
+  include 'components/breadcrumb.php';
+  
+  ?>
   <div class="container">
     <div class="card">
       <h2>Danh sách voucher</h2>

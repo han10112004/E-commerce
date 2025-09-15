@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        TRANG WEB BÁN MỸ PHẨM
+
     </header>
 
     

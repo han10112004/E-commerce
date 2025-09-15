@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header><h1>Quản lý nhân viên</h1></header>
-  <nav><a href="dashboard.php">← Quay lại Dashboard</a></nav>
+ <?php
+  ?>
   <div class="container">
     <div class="card">
       <h2>Danh sách nhân viên</h2>
