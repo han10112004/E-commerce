@@ -9,6 +9,7 @@ $queries = [
         birth_date DATE NULL,
         phone VARCHAR(20) NULL,
         email VARCHAR(100) UNIQUE NOT NULL,
+        password VARCHAR(255) NULL,
         img VARCHAR(255) NULL,
         user_catalogue_name VARCHAR(100) NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
