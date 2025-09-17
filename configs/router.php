@@ -2,6 +2,11 @@
 $page = $_GET['page'] ?? 'dashboard'; 
 
 switch ($page) {
+    case 'login':
+        $content = 'views/admin/login.php';
+        $title = "login";
+        break;
+
     case 'dashboard':
         $content = 'views/admin/dashboard.php';
         $title = "dashboard";
@@ -86,5 +91,4 @@ switch ($page) {
         break;
 }
 
-// include layout chung
-include 'views/admin/components/layout.php';
+

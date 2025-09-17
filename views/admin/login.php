@@ -1,30 +1,44 @@
 <?php
-// login.php
-session_start();
-// require_once 'config.php';
+require_once __DIR__ . '/../../controllers/AuthController.php';
 
 $errors = [];
 $email = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
-    $pass = $_POST['password'] ?? '';
-
-    if ($email === '' || $pass === '') {
+    $password = $_POST['password'] ?? '';
+    
+    if ($email === '' || $password === '') {
         $errors[] = "Vui lòng nhập email và mật khẩu.";
     } else {
-        $stmt = $pdo->prepare("SELECT id, name, email, password FROM users WHERE email = ?");
-        $stmt->execute([$email]);
-        $user = $stmt->fetch();
-        if ($user && password_verify($pass, $user['password'])) {
-            // Đăng nhập thành công -> lưu session
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['user_name'] = $user['name'];
-            // Redirect hoặc hiển thị
-            header('Location: dashboard.php');
+        $authController = new AuthController();
+        $result = $authController->login(['email' => $email, 'password' => $password]);
+        
+        if (isset($result['error'])) {
+            $errors[] = $result['error'];
+        } elseif ($result['status'] === 'success') {
+            // Lưu token vào cookie
+            setcookie('auth_token', $result['token'], [
+                'expires' => time() + 3600, // 1 giờ
+                'path' => '/',
+                'secure' => false, // Đặt true nếu dùng HTTPS
+                'httponly' => true,
+                'samesite' => 'Strict'
+            ]);
+            
+            // Lưu thông tin user vào session
+            session_start();
+            $_SESSION['user'] = $result['data'];
+            
+            // Lưu vào localStorage và redirect qua JS
+            echo "<script>
+                localStorage.setItem('auth_token', " . json_encode($result['token']) . ");
+                localStorage.setItem('auth_user', JSON.stringify(" . json_encode($result['data']) . "));
+                window.location.href = 'index.php?page=dashboard';
+            </script>";
             exit;
         } else {
-            $errors[] = "Email hoặc mật khẩu không đúng.";
+            $errors[] = "Đăng nhập thất bại";
         }
     }
 }
@@ -34,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="utf-8">
   <title>Đăng nhập</title>
-  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="http://localhost/WEBBANHANG/views/admin/css/login.css">
 </head>
 <body>
   <div class="container">
@@ -50,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
     <?php endif; ?>
 
-    <form method="post" action="login.php" novalidate>
+    <form method="post" action="index.php?page=login" novalidate>
       <div class="input">
         <label for="email">Email</label>
         <input id="email" name="email" type="email" value="<?= htmlspecialchars($email) ?>" required>
