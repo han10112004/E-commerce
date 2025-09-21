@@ -3,25 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="http://localhost/WEBBANHANG/views/admin/css/components.css">
+    <link rel="stylesheet" href="http://localhost/WEBBANHANG/views/admin/css/component.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        aside ul { list-style: none; padding-left: 0; }
-        aside li { margin: 5px 0; }
-        aside a { text-decoration: none; display: block; padding: 8px; border-radius: 5px; }
-        aside a.active { background-color: rgba(255, 255, 255, 0.2); color: white; }
-        .submenu { display: none; padding-left: 20px; }
-        .has-sub.open > .submenu { display: block; }
-        .has-sub > a:after {
-            content: '\f0d7'; /* caret-down */
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            float: right;
-        }
-        .has-sub.open > a:after {
-            content: '\f0d8'; /* caret-up */
-        }
-    </style>
 </head>
 <body>
     <aside>

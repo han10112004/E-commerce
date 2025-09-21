@@ -19,7 +19,7 @@
     <!-- <?php include 'footer.php'; ?> -->
 
     <script>
-        const token = localStorage.getItem('auth_token');
+        const token = localStorage.getItem('token');
         if (!token) {
             alert("Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại.");
             window.location.href = 'index.php?page=login&expired=1';

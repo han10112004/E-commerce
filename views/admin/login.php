@@ -17,22 +17,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($result['error'])) {
             $errors[] = $result['error'];
         } elseif ($result['status'] === 'success') {
-            // Lưu token vào cookie
-            setcookie('auth_token', $result['token'], [
-                'expires' => time() + 3600, // 1 giờ
+            setcookie('token', $result['token'], [
+                'expires' => time() + 3600, 
                 'path' => '/',
-                'secure' => false, // Đặt true nếu dùng HTTPS
+                'secure' => false, 
+                'httponly' => true,
+                'samesite' => 'Strict'
+            ]);
+
+            setcookie('refresh_token', $result['refreshToken'], [
+                'expires' => time() + 60*60*24*7,
+                'path' => '/',
+                'secure' => false,
                 'httponly' => true,
                 'samesite' => 'Strict'
             ]);
             
-            // Lưu thông tin user vào session
-            session_start();
             $_SESSION['user'] = $result['data'];
             
-            // Lưu vào localStorage và redirect qua JS
             echo "<script>
-                localStorage.setItem('auth_token', " . json_encode($result['token']) . ");
+                localStorage.setItem('token', " . json_encode($result['token']) . ");
+                localStorage.setItem('refresh_token', " . json_encode($result['refreshToken']) . ");
                 localStorage.setItem('auth_user', JSON.stringify(" . json_encode($result['data']) . "));
                 window.location.href = 'index.php?page=dashboard';
             </script>";
@@ -46,39 +51,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8">
-  <title>Đăng nhập</title>
-  <link rel="stylesheet" href="http://localhost/WEBBANHANG/views/admin/css/login.css">
+    <meta charset="utf-8">
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="http://localhost/WEBBANHANG/views/admin/css/login.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Đăng nhập</h1>
+    <div class="container">
+        <h1>Đăng nhập</h1>
 
-    <?php if (!empty($errors)): ?>
-      <div class="error">
-        <ul>
-          <?php foreach ($errors as $e): ?>
-            <li><?= htmlspecialchars($e) ?></li>
-          <?php endforeach; ?>
-        </ul>
-      </div>
-    <?php endif; ?>
+        <?php if (!empty($errors)): ?>
+            <div class="error">
+                <ul>
+                    <?php foreach ($errors as $e): ?>
+                      <li><?= htmlspecialchars($e) ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
 
-    <form method="post" action="index.php?page=login" novalidate>
-      <div class="input">
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" value="<?= htmlspecialchars($email) ?>" required>
+        <form method="post" action="index.php?page=login" novalidate>
+            <div class="input">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" value="<?= htmlspecialchars($email) ?>" required>
 
-        <label for="password">Mật khẩu</label>
-        <input id="password" name="password" type="password" required>
-      </div>
+                <label for="password">Mật khẩu</label>
+                <input id="password" name="password" type="password" required>
+            </div>
 
-      <div style="margin-top:10px">
-        <button type="submit">Đăng nhập</button>
-      </div>
-    </form>
+            <div style="margin-top:10px">
+                <button type="submit">Đăng nhập</button>
+            </div>
+        </form>
 
-    <p>Chưa có tài khoản? <a href="register.php">Đăng ký</a></p>
-  </div>
+        <p>Chưa có tài khoản? <a href="register.php">Đăng ký</a></p>
+    </div>
 </body>
 </html>

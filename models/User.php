@@ -39,4 +39,30 @@ class User {
         }
         return null;
     }
+
+    public static function storeRefreshToken($userId, $refreshToken, $expiresAt) {
+        $pdo = Database::connect(); 
+
+        $stmt = $pdo->prepare("DELETE FROM user_tokens WHERE user_id = ?");
+        $stmt->execute([$userId]);
+
+
+        $stmt = $pdo->prepare("INSERT INTO user_tokens (user_id, refresh_token, expires_at) VALUES (?, ?, ?)");
+        return $stmt->execute([$userId, $refreshToken, $expiresAt]);
+    }
+
+    public static function findByRefreshToken($refreshToken) {
+        $pdo = Database::connect();
+
+        $stmt = $pdo->prepare("
+            SELECT u.*, ut.expires_at 
+            FROM users u 
+            JOIN user_tokens ut ON u.id = ut.user_id 
+            WHERE ut.refresh_token = ?
+            LIMIT 1
+        ");
+        $stmt->execute([$refreshToken]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
 }

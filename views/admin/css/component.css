@@ -8,7 +8,6 @@ aside {
     color: white;
 }
 
-/* Tiêu đề từng section */
 aside h4 {
     margin: 20px 0 10px;
     font-size: 14px;
@@ -18,19 +17,16 @@ aside h4 {
     opacity: 0.9;
 }
 
-/* Reset danh sách */
 aside ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-/* Từng mục menu */
 aside li {
     margin: 6px 0;
-}
+} 
 
-/* Link menu */
 aside a {
     display: flex;
     align-items: center;
@@ -43,21 +39,29 @@ aside a {
     width: 150px;
 }
 
-/* Icon trong menu */
-aside a i {
-    width: 18px;
-    text-align: center;
-    font-size: 14px;
+aside a:hover,
+aside a.active { 
+    background-color: rgba(255, 255, 255, 0.2); 
+    color: white; 
 }
 
-/* Hover hiệu ứng */
-aside a:hover,
-aside a.active {
-    background-color: rgba(255, 255, 255, 0.2);
+.submenu { 
+    display: none; padding-left: 20px; 
+}
+.has-sub.open > .submenu { 
+    display: block; 
+}
+.has-sub > a:after {
+    content: '\f0d7'; 
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    float: right;
+}
+.has-sub.open > a:after {
+    content: '\f0d8'; 
 }
 
 /* BREADCRUMB */
-
 .breadcrumb {
     margin: 10px 20px;
     font-size: 14px;
@@ -83,7 +87,6 @@ aside a.active {
     gap: 10px;
 }
 
-/* BREADCRUB */
 
 
 
