@@ -1,5 +1,11 @@
 <?php
-// file này giống như "const tableColumn" trong React
+$customerDescribe = [
+    [
+        "title" => "QUẢN LÝ THÔNG TIN KHÁCH HÀNG",
+        "description" => "Đây là trang quản lý thông tin khách hàng, với các chức năng..."
+    ]
+];
+
 $customerTable = [
     [
         "name" => "ID",

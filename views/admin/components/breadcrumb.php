@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="http://localhost/WEBBANHANG/views/admin/css/breadcrumb.css">
+    <link rel="stylesheet" href="http://localhost/WEBBANHANG/views/admin/css/component.css">
 </head>
 <body>
     <?php

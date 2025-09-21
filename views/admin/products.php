@@ -1,21 +1,70 @@
+<?php
+include 'views/constants/product.php';
+$product = [
+    [
+        "id" => 1,
+        "image" => "https://via.placeholder.com/40",
+        "name" => "Laptop Dell Inspiron 15",
+        "categoryName" => "Laptop",
+        "price" => 15000000,
+        "stock" => 25,
+        "description" => "Laptop Dell Inspiron 15 với CPU i5, RAM 8GB, SSD 512GB."
+    ],
+    [
+        "id" => 2,
+        "image" => "https://via.placeholder.com/40",
+        "name" => "Chuột Logitech M221",
+        "categoryName" => "Phụ kiện",
+        "price" => 250000,
+        "stock" => 120,
+        "description" => "Chuột không dây Logitech M221, kết nối USB Receiver."
+    ],
+    [
+        "id" => 3,
+        "image" => "",
+        "name" => "Điện thoại Samsung Galaxy A55",
+        "categoryName" => "Điện thoại",
+        "price" => 7990000,
+        "stock" => 40,
+        "description" => "Smartphone Samsung Galaxy A55, màn hình 6.5 inch, pin 5000mAh."
+    ],
+    [
+        "id" => 4,
+        "image" => "https://via.placeholder.com/40",
+        "name" => "Tai nghe Sony WH-1000XM5",
+        "categoryName" => "Âm thanh",
+        "price" => 8900000,
+        "stock" => 10,
+        "description" => "Tai nghe chống ồn Sony WH-1000XM5, kết nối Bluetooth."
+    ],
+    [
+        "id" => 5,
+        "image" => "",
+        "name" => "Bàn phím cơ Keychron K2",
+        "categoryName" => "Phụ kiện",
+        "price" => 2200000,
+        "stock" => 60,
+        "description" => "Bàn phím cơ Keychron K2 Bluetooth, switch Red."
+    ]
+];
+
+
+$columns = $productTable;
+$data = $product;
+$describe = $productDescribe;
+
+?>
+
 <!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8">
-  <title>Quản lý sản phẩm</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <title>Quản lý khách hàng</title>
+    <link rel="stylesheet" href="http://localhost/WEBBANHANG/views/admin/css/products.css">
 </head>
 <body>
-  <header><h1>Quản lý sản phẩm</h1></header>
-  <nav><a href="index.php">← Quay lại Dashboard</a></nav>
-  <div class="container">
-    <div class="card">
-      <h2>Danh sách sản phẩm</h2>
-      <table border="1" width="100%" cellpadding="8" cellspacing="0">
-        <tr><th>ID</th><th>Tên sản phẩm</th><th>Giá</th><th>Thao tác</th></tr>
-        <tr><td>1</td><td>Laptop Dell</td><td>15,000,000</td><td>[Sửa] [Xóa]</td></tr>
-      </table>
-    </div>
-  </div>
+<div class="container">
+    <?php include 'views/customs/CustomTable.php'; ?>
+</div>
 </body>
 </html>

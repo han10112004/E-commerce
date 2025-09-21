@@ -1,7 +1,7 @@
 <?php
-include 'constants/customer.php';
+include 'views/constants/customer.php';
 
-// dữ liệu tạm (mock)
+// mock data
 $customer = [
     [
         "id" => 1,
@@ -26,20 +26,13 @@ $customer = [
         "phone" => "0987654321",
         "email" => "bich.tran@example.com",
         "userCatalogueName" => "Khách hàng thường"
-    ],
-    [
-        "id" => 3,
-        "img" => "",
-        "lastName" => "Trần",
-        "middleName" => "Thị",
-        "firstName" => "Bích",
-        "gender" => 2,
-        "birthDate" => null,
-        "phone" => "0987654321",
-        "email" => "bich.tran@example.com",
-        "userCatalogueName" => "Khách hàng thường"
     ]
 ];
+
+// gán dữ liệu cho customtable
+$columns = $customerTable;
+$data = $customer;
+$describe = $customerDescribe;
 ?>
 
 <!doctype html>
@@ -51,30 +44,7 @@ $customer = [
 </head>
 <body>
 <div class="container">
-    <table>
-        <thead>
-        <tr>
-            <th></th> 
-            <?php foreach ($customerTable as $column): ?>
-                <th class="<?= $column["className"] ?? "" ?>"><?= $column["name"] ?></th>
-            <?php endforeach; ?>
-        </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($customer as $index => $row): ?>
-            <tr class="<?= ($row["id"] % 2 === 0) ? "highlight" : "" ?>"> <!-- demo highlight -->
-                <td>
-                    <input type="checkbox" />
-                </td>
-                <?php foreach ($customerTable as $column): ?>
-                    <td class="<?= $column["className"] ?? "" ?>">
-                        <?= $column["render"]($row) ?>
-                    </td>
-                <?php endforeach; ?>
-            </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
+    <?php include 'views/customs/CustomTable.php'; ?>
 </div>
 </body>
 </html>

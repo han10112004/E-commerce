@@ -45,7 +45,7 @@ class AuthController {
     }
 
     public function verify($jwt) {
-        $payload = verifyJwt($jwt, $this->secret);
+        $payload = verifyJwt($jwt);
         if (!$payload) {
             return ["error" => "Token không hợp lệ hoặc đã hết hạn"];
         }
