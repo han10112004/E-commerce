@@ -19,12 +19,18 @@ class AuthController {
         $token = createJwt([
             "id" => $user->id,
             "email" => $user->email
-        ]);
+        ], JWT_EXPIRE, JWT_SECRET);
+
+        $refreshToken = generateRefreshToken(50);
+        $expiresAt = date("Y-m-d H:i:s", time() + REFRESH_EXPIRE);
+
+        User::storeRefreshToken($user->id, $refreshToken, $expiresAt);
 
         return [
             "status" => "success",
             "message" => "Đăng nhập thành công",
             "token" => $token,
+            "refreshToken" => $refreshToken,
             "data" => [
                 "id" => $user->id,
                 "email" => $user->email,
@@ -45,7 +51,7 @@ class AuthController {
     }
 
     public function verify($jwt) {
-        $payload = verifyJwt($jwt, $this->secret);
+        $payload = verifyJwt($jwt);
         if (!$payload) {
             return ["error" => "Token không hợp lệ hoặc đã hết hạn"];
         }

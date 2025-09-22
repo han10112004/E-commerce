@@ -2,6 +2,11 @@
 $page = $_GET['page'] ?? 'dashboard'; 
 
 switch ($page) {
+    case 'login':
+        $content = 'views/admin/login.php';
+        $title = "login";
+        break;
+
     case 'dashboard':
         $content = 'views/admin/dashboard.php';
         $title = "dashboard";
@@ -20,6 +25,7 @@ switch ($page) {
         $breadcrumb = [
             "pageTitle" => "Quản lý khách hàng",
             "items" => [
+                ["label" => "Người dùng"],
                 ["label" => "Khách hàng", "url" => "index.php?page=customers"],
                 ["label" => "Danh sách"]
             ]
@@ -32,6 +38,7 @@ switch ($page) {
         $breadcrumb = [
             "pageTitle" => "Quản lý nhân viên",
             "items" => [
+                 ["label" => "Người dùng"],
                 ["label" => "Nhân viên", "url" => "index.php?page=employees"],
                 ["label" => "Danh sách"]
             ]
@@ -62,13 +69,13 @@ switch ($page) {
         ];
         break;
 
-    case 'promotions':
-        $content = 'views/admin/promotions.php';
+    case 'vouchers':
+        $content = 'views/admin/vouchers.php';
         $title = "promotions";
         $breadcrumb = [
             "pageTitle" => "Quản lý khuyến mãi",
             "items" => [
-                ["label" => "Khuyến mãi", "url" => "index.php?page=promotions"],
+                ["label" => "Khuyến mãi", "url" => "index.php?page=vouchers"],
                 ["label" => "Danh sách"]
             ]
         ];
@@ -86,5 +93,4 @@ switch ($page) {
         break;
 }
 
-// include layout chung
-include 'views/admin/components/layout.php';
+

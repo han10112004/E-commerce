@@ -1,6 +1,7 @@
 <?php
 
 const JWT_EXPIRE = 180; 
+const REFRESH_EXPIRE = 604800;
 
 const JWT_SECRET = "W9XVo1vRqa5a6o2U4I2h0N2kTP5RYQpxwM9F92kglZptFGTQElXYUu5S0uEVwL2OsU0DdjlZql33H0V6jpmKr5d9pmG6coy0";
 
@@ -44,4 +45,8 @@ function verifyJwt($jwt) {
     }
 
     return $payload;
+}
+
+function generateRefreshToken($length = 50) {
+    return bin2hex(random_bytes($length / 2));
 }

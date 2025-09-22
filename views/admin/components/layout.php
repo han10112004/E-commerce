@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title><?php echo $title ?? "Trang chủ"; ?></title>
-    <link rel="stylesheet" href="http://localhost/WEBBANHANG/views/admin/css/layout.css">
+    <link rel="stylesheet" href="http://localhost/WEBBANHANG/views/admin/css/component.css">
 </head>
 <body>
     <div class="container">
@@ -17,5 +17,14 @@
         </div>
     </div>
     <!-- <?php include 'footer.php'; ?> -->
+
+    <script>
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert("Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại.");
+            window.location.href = 'index.php?page=login&expired=1';
+        }
+    </script>
+
 </body>
 </html>
