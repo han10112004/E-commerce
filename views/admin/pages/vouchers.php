@@ -48,9 +48,9 @@ $voucher = [
         "status" => "Disabled"
     ]
 ];
-$columns = $voucherTable;
+$columns = $table;
 $data = $voucher;
-$describe = $voucherDescribe;
+$describe = $describe;
 
 ?>
 

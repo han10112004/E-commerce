@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../controllers/AuthController.php';
+require_once __DIR__ . '/../../../controllers/AuthController.php';
 
 $errors = [];
 $email = '';
@@ -35,12 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             $_SESSION['user'] = $result['data'];
             
-            echo "<script>
-                localStorage.setItem('token', " . json_encode($result['token']) . ");
-                localStorage.setItem('refresh_token', " . json_encode($result['refreshToken']) . ");
-                localStorage.setItem('auth_user', JSON.stringify(" . json_encode($result['data']) . "));
-                window.location.href = 'index.php?page=dashboard';
-            </script>";
+            header("Location: /WEBBANHANG/dashboard");
             exit;
         } else {
             $errors[] = "Đăng nhập thất bại";
@@ -69,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         <?php endif; ?>
 
-        <form method="post" action="index.php?page=login" novalidate>
+        <form method="post" action="login" novalidate>
             <div class="input">
                 <label for="email">Email</label>
                 <input id="email" name="email" type="email" value="<?= htmlspecialchars($email) ?>" required>

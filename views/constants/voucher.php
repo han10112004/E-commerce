@@ -1,13 +1,13 @@
 <?php 
 
- $voucherDescribe = [
+ $describe = [
     [
         "title" => "QUẢN LÝ THÔNG TIN KHUYẾN MÃI",
         "description" => "Đây là trang quản lý thông tin khuyến mãi, với các chức năng..."
     ]
 ];
 
-$voucherTable = [
+$table = [
     [
         "name" => "Mã Voucher",
         "render" => fn($item) => "<span>#{$item["code"]}</span>"

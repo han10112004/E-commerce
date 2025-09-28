@@ -1,8 +1,8 @@
 <?php
 $describe = [
     [
-        "title" => "QUẢN LÝ THÔNG TIN KHÁCH HÀNG",
-        "description" => "Đây là trang quản lý thông tin khách hàng, với các chức năng..."
+        "title" => "QUẢN LÝ THÔNG TIN TẤT CẢ NGƯỜI DÙNG",
+        "description" => "Đây là trang quản lý thông tin tất cả người dùng, với các chức năng lọc bên dưới."
     ]
 ];
 
@@ -55,3 +55,25 @@ $table = [
         "render" => fn($item) => "<span>{$item["userCatalogueName"]}</span>"
     ]
 ];
+
+$buttonActions = [
+    [
+        "path" => "/users/update",
+        "icon" => "<i class='fa fa-edit'></i>",
+        "className" => "btn btn-edit",
+        "method" => "update",
+    ],
+    [
+        "path" => "/users/delete",
+        "icon" => "<i class='fa fa-trash'></i>",
+        "className" => "btn btn-delete",
+        "method" => "delete",
+    ],
+    [
+        "path" => "/users/view",
+        "icon" => "<i class='fa fa-search'></i>",
+        "className" => "btn btn-view",
+        "method" => "view",
+    ],
+];
+

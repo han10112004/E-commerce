@@ -49,9 +49,9 @@ $product = [
 ];
 
 
-$columns = $productTable;
+$columns = $table;
 $data = $product;
-$describe = $productDescribe;
+$describe = $describe;
 
 ?>
 

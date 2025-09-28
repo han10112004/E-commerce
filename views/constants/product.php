@@ -1,12 +1,12 @@
 <?php
-$productDescribe = [
+$describe = [
     [
         "title" => "QUẢN LÝ THÔNG TIN SẢN PHẨM",
         "description" => "Đây là trang quản lý thông tin sản phẩm, với các chức năng..."
     ]
 ];
 
-$productTable = [
+$table = [
     [
         "name" => "ID",
         "render" => function($item) {

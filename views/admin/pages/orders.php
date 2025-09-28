@@ -37,9 +37,9 @@ $order = [
         "status" => "Thành công"
     ]
 ];
-$columns = $orderTable;
+$columns = $table;
 $data = $order;
-$describe = $orderDescribe;
+$describe = $describe;
 
 ?>
 

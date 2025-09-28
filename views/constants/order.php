@@ -1,12 +1,12 @@
 <?php 
- $orderDescribe = [
+ $describe = [
     [
         "title" => "QUẢN LÝ THÔNG TIN ĐƠN HÀNG",
         "description" => "Đây là trang quản lý thông tin đơn hàng, với các chức năng..."
     ]
 ];
 
-$orderTable = [
+$table = [
     [
         "name" => "Mã đơn",
         "render" => fn($item) => "<span>#{$item["id"]}</span>"

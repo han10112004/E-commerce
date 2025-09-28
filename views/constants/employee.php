@@ -1,12 +1,12 @@
 <?php 
-$employeeDescribe = [
+$describe = [
     [
         "title" => "QUẢN LÝ THÔNG TIN NHÂN VIÊN",
         "description" => "Đây là trang quản lý thông tin nhân viên, với các chức năng..."
     ]
 ];
 
-$employeeTable = [
+$table = [
     [
         "name" => "Mã NV",
         "render" => fn($item) => "<span>#{$item["id"]}</span>"

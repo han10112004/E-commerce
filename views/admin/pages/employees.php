@@ -92,9 +92,9 @@ $employee = [
         "status" => "Đang làm"
     ]
 ];
-$columns = $employeeTable;
+$columns = $table;
 $data = $employee;
-$describe = $employeeDescribe;
+$describe = $describe;
 
 ?>
 

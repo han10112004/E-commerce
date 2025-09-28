@@ -30,9 +30,9 @@ $customer = [
 ];
 
 // gán dữ liệu cho customtable
-$columns = $customerTable;
+$columns = $table;
 $data = $customer;
-$describe = $customerDescribe;
+$describe = $describe;
 ?>
 
 <!doctype html>

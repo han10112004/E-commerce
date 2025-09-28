@@ -3,7 +3,7 @@
 }
 
 .custom-table-container .describte p{
-    color:rgb(2, 122, 76);
+    color:#d5265ee3;
 }
 
 table.custom-table {
@@ -22,6 +22,21 @@ table.custom-table th {
 .text-center {
     text-align: center;
 }
-.highlight {
-    background: #ffc;
+
+.button-action {
+    display: flex;
+    gap: 5px;
 }
+
+.btn {
+    padding: 5px 8px;
+    border-radius: 4px;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-edit { background: teal; }
+.btn-delete { background: #ec4758; }
+.btn-view { background: #f8ac59; }
+

@@ -1,88 +1,114 @@
 <?php 
-$page = $_GET['page'] ?? 'dashboard'; 
+$page = $_GET['page'] ?? 'dashboard';
 
 switch ($page) {
     case 'login':
-        $content = 'views/admin/login.php';
+        $content = 'views/admin/pages/login.php';
         $title = "login";
         break;
 
     case 'dashboard':
-        $content = 'views/admin/dashboard.php';
+        $content = 'views/admin/pages/dashboard.php';
         $title = "dashboard";
         $breadcrumb = [
             "pageTitle" => "Bảng điều khiển",
             "items" => [
-                ["label" => "Dashboard", "url" => "index.php?page=dashboard"],
+                ["label" => "Dashboard", "url" => "dashboard"],
                 ["label" => "Tổng quan"]
             ]
         ];
         break;
 
+    case 'users':
+        $content = 'views/admin/pages/users.php';
+        $title = "users";
+        $breadcrumb = [
+            "pageTitle" => "Quản lý danh sách tất cả người dùng",
+            "items" => [
+                ["label" => "Người dùng"],
+                ["label" => "Tất cả người dùng", "url" => "users"],
+                ["label" => "Danh sách"]
+            ]
+        ];
+    break;
+
+    case 'catalogues':
+        $content = 'views/admin/pages/user_catalogue.php';
+        $title = "catalogues";
+        $breadcrumb = [
+            "pageTitle" => "Quản lý danh sách nhóm người dùng",
+            "items" => [
+                ["label" => "Nhóm người dùng"],
+                ["label" => "Nhóm người dùng", "url" => "catalogues"],
+                ["label" => "Danh sách"]
+            ]
+        ];
+    break;
+
     case 'customers':
-        $content = 'views/admin/customers.php';
+        $content = 'views/admin/pages/customers.php';
         $title = "customers";
         $breadcrumb = [
             "pageTitle" => "Quản lý khách hàng",
             "items" => [
                 ["label" => "Người dùng"],
-                ["label" => "Khách hàng", "url" => "index.php?page=customers"],
+                ["label" => "Khách hàng", "url" => "customers"],
                 ["label" => "Danh sách"]
             ]
         ];
         break;
 
     case 'employees':
-        $content = 'views/admin/employees.php';
+        $content = 'views/admin/pages/employees.php';
         $title = "employees";
         $breadcrumb = [
             "pageTitle" => "Quản lý nhân viên",
             "items" => [
                  ["label" => "Người dùng"],
-                ["label" => "Nhân viên", "url" => "index.php?page=employees"],
+                ["label" => "Nhân viên", "url" => "employees"],
                 ["label" => "Danh sách"]
             ]
         ];
         break;
 
     case 'orders':
-        $content = 'views/admin/orders.php';
+        $content = 'views/admin/pages/orders.php';
         $title = "orders";
         $breadcrumb = [
             "pageTitle" => "Quản lý đơn hàng",
             "items" => [
-                ["label" => "Đơn hàng", "url" => "index.php?page=orders"],
+                ["label" => "Đơn hàng", "url" => "orders"],
                 ["label" => "Danh sách"]
             ]
         ];
         break;
 
     case 'products':
-        $content = 'views/admin/products.php';
+        $content = 'views/admin/pages/products.php';
         $title = "products";
         $breadcrumb = [
             "pageTitle" => "Quản lý sản phẩm",
             "items" => [
-                ["label" => "Sản phẩm", "url" => "index.php?page=products"],
+                ["label" => "Sản phẩm", "url" => "products"],
                 ["label" => "Danh sách"]
             ]
         ];
         break;
 
     case 'vouchers':
-        $content = 'views/admin/vouchers.php';
+        $content = 'views/admin/pages/vouchers.php';
         $title = "promotions";
         $breadcrumb = [
             "pageTitle" => "Quản lý khuyến mãi",
             "items" => [
-                ["label" => "Khuyến mãi", "url" => "index.php?page=vouchers"],
+                ["label" => "Khuyến mãi", "url" => "vouchers"],
                 ["label" => "Danh sách"]
             ]
         ];
         break;
 
     default:
-        $content = 'views/admin/404.php';
+        $content = 'views/admin/pages/404.php';
         $title = "404 Not Found";
         $breadcrumb = [
             "pageTitle" => "Không tìm thấy trang",
@@ -92,5 +118,3 @@ switch ($page) {
         ];
         break;
 }
-
-

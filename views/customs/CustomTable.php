@@ -9,35 +9,44 @@ if (!isset($columns) || !isset($data)) {
 
 <div class="custom-table-container">
     <div class="describte">
-        <?php if (isset($describe) && is_array($describe)): ?>
-            <?php foreach ($describe as $desc): ?>
-                <h3><?= htmlspecialchars($desc["title"]) ?></h3>
-                <p><?= htmlspecialchars($desc["description"]) ?></p>
-            <?php endforeach; ?>
-        <?php endif; ?>
+        <?php foreach ($describe as $desc): ?>
+            <h3><?= htmlspecialchars($desc["title"]) ?></h3>
+            <p><?= htmlspecialchars($desc["description"]) ?></p>
+        <?php endforeach; ?>
     </div>
+
     <table class="custom-table">
         <thead>
-        <tr>
-            <th></th> <!-- checkbox -->
-            <?php foreach ($columns as $column): ?>
-                <th class="<?= $column["className"] ?? "" ?>">
-                    <?= htmlspecialchars($column["name"]) ?>
-                </th>
-            <?php endforeach; ?>
-        </tr>
+            <tr>
+                <th></th>
+                <?php foreach ($table as $column): ?>
+                    <th class="<?= $column["className"] ?? "" ?>">
+                        <?= htmlspecialchars($column["name"]) ?>
+                    </th>
+                <?php endforeach; ?>
+                <th>Hành động</th>
+            </tr>
         </thead>
         <tbody>
-        <?php foreach ($data as $index => $row): ?>
-            <tr class="<?= ($row["id"] ?? 0) % 2 === 0 ? "highlight" : "" ?>">
-                <td><input type="checkbox" /></td>
-                <?php foreach ($columns as $column): ?>
-                    <td class="<?= $column["className"] ?? "" ?>">
-                        <?= $column["render"]($row) ?>
+            <?php foreach ($data as $row): ?>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <?php foreach ($table as $column): ?>
+                        <td class="<?= $column["className"] ?? "" ?>">
+                            <?= $column["render"]($row) ?>
+                        </td>
+                    <?php endforeach; ?>
+                    <td>
+                        <div class="button-action">
+                            <?php foreach ($buttonActions as $action): ?>
+                                <a href="<?= $action["path"] ?>?id=<?= $row["id"] ?>" class="<?= $action["className"] ?>">
+                                    <?= $action["icon"] ?>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
                     </td>
-                <?php endforeach; ?>
-            </tr>
-        <?php endforeach; ?>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </div>

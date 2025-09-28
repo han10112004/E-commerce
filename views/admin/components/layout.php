@@ -18,13 +18,14 @@
     </div>
     <!-- <?php include 'footer.php'; ?> -->
 
-    <script>
-        const token = localStorage.getItem('token');
-        if (!token) {
-            alert("Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại.");
-            window.location.href = 'index.php?page=login&expired=1';
-        }
-    </script>
+    <?php
+    if (!isset($_COOKIE['token'])) {
+        header("Location: /WEBBANHANG/login");
+        exit();
+    }
+
+    $token = $_COOKIE['token']; 
+    ?>
 
 </body>
 </html>

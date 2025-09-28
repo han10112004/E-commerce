@@ -2,30 +2,35 @@
 require_once __DIR__ . '/../configs/database.php';
 
 class User {
-    public $id;
-    public $img;
-    public $lastName;
-    public $middleName;
-    public $firstName;
-    public $gender;
-    public $birthDate;
-    public $phone;
-    public $email;
-    public $password; 
-    public $userCatalogueName;
+    public ?int $id;
+    public ?string $img;
+    public ?string $lastName;
+    public ?string $middleName;
+    public ?string $firstName;
+    public ?string $gender;
+    public ?string $birthDate;
+    public ?string $phone;
+    public ?string $email;
+    public ?string $password;
+    public ?string $userCatalogueName;
+    public ?DateTime $createdAt;
+    public ?DateTime $updatedAt;
 
-    public function __construct($data = []) {
-        $this->id = $data['id'] ?? null;
-        $this->img = $data['img'] ?? null;
-        $this->lastName = $data['last_name'] ?? null;
-        $this->middleName = $data['middle_name'] ?? null;
-        $this->firstName = $data['first_name'] ?? null;
-        $this->gender = $data['gender'] ?? null;
-        $this->birthDate = $data['birth_date'] ?? null;
-        $this->phone = $data['phone'] ?? null;
-        $this->email = $data['email'] ?? null;
-        $this->password = $data['password'] ?? null;
+    public function __construct(array $data = []) {
+        $this->id                = $data['id'] ?? null;
+        $this->img               = $data['img'] ?? null;
+        $this->lastName          = $data['last_name'] ?? null;
+        $this->middleName        = $data['middle_name'] ?? null;
+        $this->firstName         = $data['first_name'] ?? null;
+        $this->gender            = $data['gender'] ?? null;
+        $this->birthDate         = $data['birth_date'] ?? null;
+        $this->phone             = $data['phone'] ?? null;
+        $this->email             = $data['email'] ?? null;
+        $this->password          = $data['password'] ?? null;
         $this->userCatalogueName = $data['user_catalogue_name'] ?? null;
+
+        $this->createdAt         = isset($data['created_at']) ? new DateTime($data['created_at']) : null;
+        $this->updatedAt         = isset($data['updated_at']) ? new DateTime($data['updated_at']) : null;
     }
 
     public static function findByEmail($email) {
