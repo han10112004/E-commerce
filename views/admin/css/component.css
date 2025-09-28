@@ -25,6 +25,7 @@ aside ul {
 
 aside li {
     margin: 6px 0;
+    font-family: monospace
 } 
 
 aside a {

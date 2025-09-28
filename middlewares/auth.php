@@ -5,18 +5,18 @@ function requireAuth() {
     $token = $_COOKIE['token'] ?? null;
 
     if (!$token) {
-        header("Location: index.php?page=login&expired=1");
+        header("Location: login&expired=1");
         exit;
     }
 
     $authController = new AuthController();
     $payload = $authController->verify($token);
 
-    if (isset($payload['error'])) {
+    if ($payload['status'] === 'error') {
         $refreshToken = $_COOKIE['refresh_token'] ?? null;
 
         if ($refreshToken) {
-            $ch = curl_init("http://localhost/webbanhang/apis/RefreshToken.php");
+            $ch = curl_init("http://localhost/webbanhang/apis/AuthApi.php?route=refresh");
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
@@ -40,7 +40,7 @@ function requireAuth() {
         setcookie("token", "", time() - 3600, "/");
         setcookie("refresh_token", "", time() - 3600, "/");
         session_destroy();
-        header("Location: index.php?page=login&expired=1");
+        header("Location: login&expired=1");
         exit;
     }
 }

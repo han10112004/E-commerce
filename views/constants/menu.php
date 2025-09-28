@@ -7,7 +7,7 @@ $menu = [
                 "icon" => "fa-solid fa-house",
                 "label" => "Tổng quan",
                 "active" => ["dashboard"],
-                "to" => "index.php?page=dashboard",
+                "to" => "dashboard",
                 "links" => []
             ],
         ],
@@ -18,7 +18,7 @@ $menu = [
             [
                 "icon" => "fa-solid fa-users",
                 "label" => "Người dùng",
-                "active" => ["employees", "customers"], // Parent active khi sub active
+                "active" => ["employees", "customers"], 
                 "to" => "#", 
                 "links" => [
                     "items" => [
@@ -26,13 +26,13 @@ $menu = [
                             "icon" => "fa-solid fa-user-tie",
                             "label" => "Nhân viên",
                             "active" => ["employees"],
-                            "to" => "index.php?page=employees",
+                            "to" => "employees",
                         ],
                         [
                             "icon" => "fa-solid fa-users",
                             "label" => "Khách hàng",
                             "active" => ["customers"],
-                            "to" => "index.php?page=customers",
+                            "to" => "customers",
                         ]
                     ]
                 ]
@@ -41,21 +41,21 @@ $menu = [
                 "icon" => "fa-solid fa-box",
                 "label" => "Quản lý sản phẩm",
                 "active" => ["products"],
-                "to" => "index.php?page=products",
+                "to" => "products",
                 "links" => []
             ],
             [
                 "icon" => "fa-solid fa-file-invoice",
                 "label" => "Đơn hàng",
                 "active" => ["orders"],
-                "to" => "index.php?page=orders",
+                "to" => "orders",
                 "links" => []
             ],
             [
                 "icon" => "fa-solid fa-tags",
                 "label" => "Khuyến mãi",
                 "active" => ["vouchers"],
-                "to" => "index.php?page=vouchers",
+                "to" => "vouchers",
                 "links" => []
             ]
         ]
@@ -67,7 +67,7 @@ $menu = [
                 "icon" => "fa-solid fa-chart-bar",
                 "label" => "Thống kê",
                 "active" => ["reports"],
-                "to" => "index.php?page=reports",
+                "to" => "reports",
                 "links" => []
             ]
         ]

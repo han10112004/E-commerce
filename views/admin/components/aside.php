@@ -17,7 +17,7 @@
             <ul>
                 <?php foreach ($section['items'] as $item): ?>
                     <?php 
-                        $itemPage = str_replace('index.php?page=', '', $item['to']); 
+
                         $isActive = in_array($currentPage, $item['active']) ? 'active' : '';
                         $hasSub = !empty($item['links']);
                     ?>
@@ -30,7 +30,7 @@
                             <ul class="submenu">
                                 <?php foreach ($item['links']['items'] as $sub): ?>
                                     <?php 
-                                        $subPage = str_replace('index.php?page=', '', $sub['to']); 
+
                                         $isSubActive = in_array($currentPage, $sub['active']) ? 'active' : '';
                                     ?>
                                     <li>
@@ -48,7 +48,7 @@
     </aside>
 
     <script>
-document.querySelectorAll(".has-sub > a").forEach(a => {
+    document.querySelectorAll(".has-sub > a").forEach(a => {
             a.addEventListener("click", e => {
                 e.preventDefault();
                 a.parentElement.classList.toggle("open");

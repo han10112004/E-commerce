@@ -1,6 +1,6 @@
 <?php
 $queries = [
-    "CREATE TABLE user_tokens (
+    "CREATE TABLE IF NOT EXISTS user_tokens (
         id INT AUTO_INCREMENT PRIMARY KEY,
         user_id INT NOT NULL,
         refresh_token VARCHAR(255) NOT NULL,
